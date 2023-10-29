@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import getParse from './parsers.js';
+import getParsedData from './parse.js';
 import fs from 'fs';
 import path from 'path';
+import getDiff from './getDiff.js';
 
 program
     .name('gendiff')
@@ -16,9 +17,20 @@ program
     const fullPath1 = fs.readFileSync(path.resolve(process.cwd(), filepath1));
     const fullPath2 = fs.readFileSync(path.resolve(process.cwd(), filepath2));
 
-    const result1 = getParse(fullPath1);
-    const result2 = getParse(fullPath2);
-        return console.log(result1, result2);
+    const parsedData1 = getParsedData(fullPath1);
+    const parsedData2 = getParsedData(fullPath2);
+
+    const diffResult = getDiff(parsedData1, parsedData2);
+
+    const result = JSON.stringify(diffResult, (key, value) => {
+        if (value === "deleted") return '-' + key + value
+    
+        return value;
+    }, 2);
+
+// 
+    return console.log(result);
+
     })
 
 program.parse();
