@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import getType from './src/getType.js';
-import makeStylish from './formatters/stylish.js';
+import formatSelection from './formatters/index.js';
 import getParsedData from './src/parser.js';
 
 const readFile = (filepath) => {
@@ -12,7 +12,7 @@ const readFile = (filepath) => {
 
 const getGenDiff = (file1, file2, format = 'stylish') => {
   const newTree = getType(readFile(file1), readFile(file2));
-  return makeStylish(newTree, format);
+  return formatSelection(newTree, format);
 };
 
 export default getGenDiff;
