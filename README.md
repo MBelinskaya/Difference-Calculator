@@ -35,7 +35,10 @@ npm link
 `gendiff filepath1.json filepath2.json`
 
 - plain format  
-`gendiff --format plain path/to/file.yml another/path/file.json`  
+`gendiff --format plain filepath1.yml filepath2.yml`  
+
+- json format  
+`gendiff --format json filepath1.json filepath2.json`
 
 ---
 
@@ -61,3 +64,8 @@ gendiff --format plain filepath1.json filepath2.json
 
 [![asciicast](https://asciinema.org/a/hLNMK7awJdVF6mKVeiyVYXDAu.svg)](https://asciinema.org/a/hLNMK7awJdVF6mKVeiyVYXDAu)
 
+json format:
+`gendiff --format json filepath1.json filepath2.json
+`
+
+[![asciicast](https://asciinema.org/a/J6cEWaWSJi4yCBdgtmE2qgEIA.svg)](https://asciinema.org/a/J6cEWaWSJi4yCBdgtmE2qgEIA)
