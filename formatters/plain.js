@@ -7,14 +7,15 @@ const stringify = (currentValue) => {
   if (_.isString(currentValue)) {
     return `'${currentValue}'`;
   }
-  return `${currentValue}`;
+  return currentValue;
 };
 
 const getPath = (paths) => paths.flat().join('.');
 
 const makePlain = (treeNew) => {
   const iter = (tree, currentPath) => {
-    const result = tree.map((data) => {
+    const filteredTree = tree.filter((data) => data.type !== 'unchanged');
+    const result = filteredTree.map((data) => {
       const generatePath = getPath([currentPath, data.name]);
       switch (data.type) {
         case 'nested':
@@ -25,8 +26,6 @@ const makePlain = (treeNew) => {
           return `Property '${generatePath.slice(1)}' was added with value: ${stringify(data.value)}`;
         case 'changed':
           return `Property '${generatePath.slice(1)}' was updated. From ${stringify(data.value1)} to ${stringify(data.value2)}`;
-        case 'unchanged':
-          return null;
         default: {
           throw new Error(`"${data.type}" unknown type`); }
       }
