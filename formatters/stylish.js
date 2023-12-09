@@ -42,7 +42,6 @@ const makeStylish = (treeNew) => {
           throw new Error(`"${data.type}" unknown extension`); }
       }
     });
-
     return [
       '{',
       ...result,
