@@ -12,4 +12,5 @@ test('gendiff', () => {
   expect(getGenDiff('filepath1.json', 'filepath2.json')).toBe(fs.readFileSync(getFixturePath('expected_stylish_format.txt'), 'utf-8'));
   expect(getGenDiff('filepath1.json', 'filepath2.json', 'plain')).toBe(fs.readFileSync(getFixturePath('expected_plain_format.txt'), 'utf-8'));
   expect(getGenDiff('filepath1.json', 'filepath2.json', 'json')).toBe(fs.readFileSync(getFixturePath('expected_json_format.txt'), 'utf-8'));
+  expect(getGenDiff('filepath1.yml', 'filepath2.yml')).toBe(fs.readFileSync(getFixturePath('expected_stylish_format_yml.txt'), 'utf-8'));
 });
