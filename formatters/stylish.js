@@ -32,10 +32,7 @@ const makeStylish = (treeNew) => {
         case 'added':
           return `${beforeIndent(depth)}+ ${data.name}: ${stringify(data.value, depth + 1)}`;
         case 'changed':
-          return [
-            `${beforeIndent(depth)}- ${data.name}: ${stringify(data.value1, depth + 1)}`,
-            `${beforeIndent(depth)}+ ${data.name}: ${stringify(data.value2, depth + 1)}`,
-          ].join('\n');
+          return [`${beforeIndent(depth)}- ${data.name}: ${stringify(data.value1, depth + 1)}`, `${beforeIndent(depth)}+ ${data.name}: ${stringify(data.value2, depth + 1)}`].join('\n');
         case 'unchanged':
           return `${beforeIndent(depth)}  ${data.name}: ${stringify(data.value, depth + 1)}`;
         default: {
