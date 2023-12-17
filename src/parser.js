@@ -1,13 +1,13 @@
 import yaml from 'js-yaml';
 
-const getParsedData = (data, ext) => {
-  switch (ext) {
+const getParsedData = (data, type) => {
+  switch (type) {
     case 'json':
       return JSON.parse(data);
     case 'yml':
       return yaml.load(data);
     default:
-      throw new Error(`"${ext}" unknown extension`);
+      throw new Error(`"${type}" unknown type`);
   }
 };
 
