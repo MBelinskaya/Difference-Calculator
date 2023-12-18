@@ -5,6 +5,7 @@ const getParsedData = (data, type) => {
     case 'json':
       return JSON.parse(data);
     case 'yml':
+    case 'yaml':
       return yaml.load(data);
     default:
       throw new Error(`"${type}" unknown type`);
