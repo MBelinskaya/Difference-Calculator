@@ -7,7 +7,7 @@ const generteDifference = (data1, data2) => {
 
   const result = allKeys.map((node) => {
     if (_.isObject(data1[node]) && _.isObject(data2[node])) {
-      return { name: node, type: 'nested', value: generteDifference(data1[node], data2[node]) };
+      return { name: node, type: 'nested', children: generteDifference(data1[node], data2[node]) };
     }
     if (!Object.hasOwn(data1, node)) {
       return { name: node, type: 'added', value: data2[node] };
