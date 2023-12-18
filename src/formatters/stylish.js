@@ -24,7 +24,7 @@ const makeStylish = (treeNew) => {
     const result = tree.map((data) => {
       switch (data.type) {
         case 'nested':
-          return `${getIndent(depth)}  ${data.name}: {\n${iter(data.value, depth + 1).join('\n')}\n  ${getIndent(depth)}}`;
+          return `${getIndent(depth)}  ${data.name}: {\n${iter(data.children, depth + 1).join('\n')}\n  ${getIndent(depth)}}`;
         case 'deleted':
           return `${getIndent(depth)}- ${data.name}: ${stringify(data.value, depth)}`;
         case 'added':
