@@ -14,18 +14,17 @@ const getPath = (paths) => paths.flat().join('.');
 
 const makePlain = (treeNew) => {
   const iter = (tree, currentPath) => {
-    // const filteredTree = tree.filter((data) => data.type !== );
     const result = tree.map((data) => {
-      const generatePath = getPath([currentPath, data.name]);
+      const path = getPath([currentPath, data.name]);
       switch (data.type) {
         case 'nested':
-          return iter(data.value, generatePath);
+          return iter(data.children, path);
         case 'deleted':
-          return `Property '${generatePath.slice(1)}' was removed`;
+          return `Property '${path.slice(1)}' was removed`;
         case 'added':
-          return `Property '${generatePath.slice(1)}' was added with value: ${stringify(data.value)}`;
+          return `Property '${path.slice(1)}' was added with value: ${stringify(data.value)}`;
         case 'changed':
-          return `Property '${generatePath.slice(1)}' was updated. From ${stringify(data.value1)} to ${stringify(data.value2)}`;
+          return `Property '${path.slice(1)}' was updated. From ${stringify(data.value1)} to ${stringify(data.value2)}`;
         case 'unchanged':
           return null;
         default: {
